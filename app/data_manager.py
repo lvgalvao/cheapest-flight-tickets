@@ -1,7 +1,5 @@
 import requests
-
 from config import SHEETY_PRICES_ENDPOINT
-
 
 class DataManager:
     def __init__(self):
