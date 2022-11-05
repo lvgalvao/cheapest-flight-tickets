@@ -5,18 +5,19 @@ import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
 from config import TEQUILA_ENDPOINT, TEQUILA_QUERY, HEADER, TEQUILA_SEARCH
+from flight_data import FlightData
 
-sheet_data = [
-    {"city": "Paris", "iataCode": "CDG", "lowestPrice": 54, "id": 2},
-    {"city": "Berlin", "iataCode": "BER", "lowestPrice": 42, "id": 3},
-    {"city": "Tokyo", "iataCode": "NRT", "lowestPrice": 485, "id": 4},
-    {"city": "Sydney", "iataCode": "SYD", "lowestPrice": 551, "id": 5},
-    {"city": "Istanbul", "iataCode": "SAW", "lowestPrice": 95, "id": 6},
-    {"city": "Kuala Lumpur", "iataCode": "KUL", "lowestPrice": 414, "id": 7},
-    {"city": "New York", "iataCode": "JFK", "lowestPrice": 240, "id": 8},
-    {"city": "San Francisco", "iataCode": "SFO", "lowestPrice": 260, "id": 9},
-    {"city": "Cape Town", "iataCode": "CPT", "lowestPrice": 378, "id": 10},
-]
+# sheet_data = [
+#     {"city": "Paris", "iataCode": "CDG", "lowestPrice": 54, "id": 2},
+#     {"city": "Berlin", "iataCode": "BER", "lowestPrice": 42, "id": 3},
+#     {"city": "Tokyo", "iataCode": "NRT", "lowestPrice": 485, "id": 4},
+#     {"city": "Sydney", "iataCode": "SYD", "lowestPrice": 551, "id": 5},
+#     {"city": "Istanbul", "iataCode": "SAW", "lowestPrice": 95, "id": 6},
+#     {"city": "Kuala Lumpur", "iataCode": "KUL", "lowestPrice": 414, "id": 7},
+#     {"city": "New York", "iataCode": "JFK", "lowestPrice": 240, "id": 8},
+#     {"city": "San Francisco", "iataCode": "SFO", "lowestPrice": 260, "id": 9},
+#     {"city": "Cape Town", "iataCode": "CPT", "lowestPrice": 378, "id": 10},
+# ]
 
 tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 tomorrow_plus_6_months = datetime.date.today() + datetime.timedelta(days=1 + 6 * 30)
@@ -36,6 +37,8 @@ class FlightSearch:
         return iata_codes_sheety
 
     def get_cheap_flights(self, sheet_data: dict):
+        
+        
         for n in range(len(sheet_data)):
             response = requests.get(
                 url=f"{TEQUILA_ENDPOINT}{TEQUILA_SEARCH}",
@@ -43,7 +46,7 @@ class FlightSearch:
                 params={
                     "fly_from": "GIG",
                     "fly_to": sheet_data[n]["iataCode"],
-                    "max_stopovers": 0,
+                    "max_stopovers": 2,
                     "date_from": tomorrow.strftime("%d/%m/%Y"),
                     "date_to": tomorrow_plus_6_months.strftime("%d/%m/%Y"),
                     "nights_in_dst_from": 7,
@@ -53,10 +56,14 @@ class FlightSearch:
                     "limit": 1,
                 },
             )
-            data = response.json()
-            pp.pprint(data)
-        pass
-
-
-fs = FlightSearch()
-fs.get_cheap_flights(sheet_data)
+                flight_data = FlightData(
+                    price=data["price"],
+                    origin_city=data["route"][0]["cityFrom"],
+                    origin_airport=data["route"][0]["flyFrom"],
+                    destination_city=data["route"][0]["cityTo"],
+                    destination_airport=data["route"][0]["flyTo"],
+                    out_date=data["route"][0]["local_departure"].split("T")[0],
+                    return_date=data["route"][1]["local_departure"].split("T")[0]
+                )
+        print(f"{flight_data.destination_city}: £{flight_data.price}")
+        return flight_data
