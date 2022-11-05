@@ -1,6 +1,6 @@
 # The cheapest flights tickets
 
-Save up to 60% on airline tickets.
+Save up to 70% on airline tickets.
 
 ## Functions
 
