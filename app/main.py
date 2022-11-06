@@ -1,7 +1,9 @@
+import datetime
+import pprint
+
 from data_manager import DataManager
 from flight_search import FlightSearch
 
-import pprint
 
 dataManager = DataManager()
 flightSearch = FlightSearch()
@@ -18,18 +20,24 @@ sheet_data = [
     {"city": "Cape Town", "iataCode": "CPT", "lowestPrice": 378, "id": 10},
 ]
 
+tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+six_month_from_today = datetime.date.today() + datetime.timedelta(days=1 + 6 * 30)
+
+ORIGIN_CITY_IATA = "GRU"
+
 pp = pprint.PrettyPrinter(indent=4)
 
 if sheet_data[0]["iataCode"] == "":
-    cities = []
-    for rows in range(len(sheet_data)):
-        cities.append(sheet_data[rows]["city"])
-        # print(cities)
-    iata_code = flightSearch.get_iata_code(cities)
-    for rows in range(len(sheet_data)):
-        sheet_data[rows]["iataCode"] = iata_code[rows]
-    new_sheet_data = dataManager.post_sheety_data(datasheet=sheet_data)
-    # pp.pprint(new_sheet_data)
+    for row in sheet_data:
+        row["iataCode"] = flightSearch.get_iata_code(row["city"])
+    dataManager.destination_data = sheet_data
+    dataManager.post_sheety_data()
 
-fs = FlightSearch()
-fs.get_cheap_flights(sheet_data)
+
+for destionation in sheet_data:
+    flight = flightSearch.get_cheap_flights(
+        ORIGIN_CITY_IATA,
+        destionation["iataCode"],
+        from_time=tomorrow,
+        to_time=six_month_from_today  
+    ) 
