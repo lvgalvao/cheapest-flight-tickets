@@ -10,4 +10,8 @@ Save up to 60% on airline tickets.
 
 ## Doing
 
-1) Export to S3 daily records
+0.4) Fix the api gsuit module
+
+0.1) Fix get cheap flights module
+0.2) Create notification manager module to send SMS
+0.3) Create the S3 module to export daily records to AWS bucket
