@@ -10,8 +10,16 @@ Save up to 60% on airline tickets.
 
 ## Doing
 
-0.4) Fix the api gsuit module
+- Change the API to get google spreedsheet 
 
-0.1) Fix get cheap flights module
-0.2) Create notification manager module to send SMS
-0.3) Create the S3 module to export daily records to AWS bucket
+## Todo
+
+- Fix the api gsuit module
+- Add multiple stopovers functionality
+- Create the S3 module to export daily records to AWS bucket
+- Create notification manager module to send SMS
+- Create notification manager module to send Whatsapp
+
+## Done
+
+- Fix get cheap flights module
