@@ -1,9 +1,13 @@
+# Credentials
+credentials.json
+token.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
 config.py
+
 # C extensions
 *.so
 
