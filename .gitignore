@@ -1,4 +1,4 @@
-# crediantials and token.json
+# Credentials
 credentials.json
 token.json
 
@@ -6,8 +6,8 @@ token.json
 __pycache__/
 *.py[cod]
 *$py.class
-credi
 config.py
+
 # C extensions
 *.so
 
