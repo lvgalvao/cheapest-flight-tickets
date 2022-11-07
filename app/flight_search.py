@@ -51,7 +51,5 @@ class FlightSearch:
             return_date=data["route"][1]["local_departure"].split("T")[0]
         )
         print(f"{flight_data.destination_city}: £{flight_data.price}")
-        print(data)
-        print(flight_data)
         return flight_data
 
