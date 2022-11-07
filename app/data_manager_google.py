@@ -47,7 +47,6 @@ class DataManager:
                                         range=SAMPLE_RANGE_NAME).execute()
             values = result.get('values', [])
 
-            print(values)
             sheet_data = []
             sheet_data = [dict(zip(values[0], v)) for v in values[1:]]
             print(sheet_data)
