@@ -50,7 +50,9 @@ class DataManager:
             sheet_data = []
             sheet_data = [dict(zip(values[0], v)) for v in values[1:]]
             print(sheet_data)
-            return sheet_data
+            return sheet_data #somudeiessecomentario
             
         except HttpError as err:
             print(err)
+
+            #somente uma modificacao
