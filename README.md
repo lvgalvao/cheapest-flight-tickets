@@ -1,4 +1,4 @@
-# The cheapest flights tickets - Save up to 60% on airline tickets.
+# The cheapest flights tickets - Save up to 60% on airline  tickets.
 
 As a summary, I built an ETL process to get information about flights and then generate user insights and alarms.
 
