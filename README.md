@@ -6,7 +6,7 @@ I used Spark to run the data modeling process, postgreSQL to orchestrate the cus
 
 <p align="center">
 <img src="https://github.com/lvgalvao/cheapest-flight-tickets/blob/main/docs/cheapest-flight-tickets.png?raw=true" alt="flowchart" width="80%">
-<p>
+<p> 
 
 ## Functions
 
