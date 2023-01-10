@@ -2,7 +2,7 @@
 
 As a summary, I built an ETL process to get information about flights and then generate user insights and alarms.
 
-I used Spark to run the data modeling process, postgreSQL to orchestrate the custom data, a web application to design (file) and Airflow for table with final fluiph.js.
+I used Spark to run the data modeling process, postgreSQL to orchestrate the custom data, a web application to design (file) and Airflow for table with final fluiph.js. 
 
 <p align="center">
 <img src="https://github.com/lvgalvao/cheapest-flight-tickets/blob/main/docs/cheapest-flight-tickets.png?raw=true" alt="flowchart" width="80%">
