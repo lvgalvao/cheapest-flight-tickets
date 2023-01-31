@@ -8,7 +8,7 @@ I used Spark to run the data modeling process, postgreSQL to orchestrate the cus
 <img src="https://github.com/lvgalvao/cheapest-flight-tickets/blob/main/docs/cheapest-flight-tickets.png?raw=true" alt="flowchart" width="80%">
 <p> 
 
-## Functions
+## Functions 
 
 - Integrate with Google Sheet to personalize your search (e.g. to looking for cities that you want to go to)
 - Use the Flight Search API to check for the cheapest flights integrating hundreds of airlines companies
