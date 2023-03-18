@@ -12,4 +12,4 @@ I used Spark to run the data modeling process, postgreSQL to orchestrate the cus
 
 - Integrate with Google Sheet to personalize your search (e.g. to looking for cities that you want to go to)
 - Use the Flight Search API to check for the cheapest flights integrating hundreds of airlines companies
-- Send SMS with the best tickets using Twillio API 
+- Send SMS with the best tickets using Twillio API  
